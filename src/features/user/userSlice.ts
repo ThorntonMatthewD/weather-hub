@@ -1,6 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface UserState {
   zipCode: string
