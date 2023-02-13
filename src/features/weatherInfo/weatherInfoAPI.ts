@@ -6,12 +6,12 @@ export const weatherAPI = createApi({
   reducerPath: 'weatherAPI',
   baseQuery: fetchBaseQuery(
     {
-      baseUrl: `http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}`
+      baseUrl: `http://api.weatherapi.com/v1/`
     }
   ),
   endpoints: (builder) => ({
     getCurrentWeather: builder.query<string, string>({
-      query: (zipCode) => `&q=${zipCode}&aqi=no`,
+      query: (zipCode) => `current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${zipCode}&aqi=no`,
     }),
   }),
 })
