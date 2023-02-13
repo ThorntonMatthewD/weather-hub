@@ -25,8 +25,6 @@ const Home = (props: HomeProps) => {
     skip: false,
   })
 
-  console.dir(process.env)
-
   return(
     <>
       <h1>Welcome to Weather Hub</h1>
