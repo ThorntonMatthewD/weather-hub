@@ -9,7 +9,7 @@ const initialState: WeatherInfoState = {
 };
 
 export const weatherSlice = createSlice({
-  name: "weather",
+  name: "weatherInfo",
   initialState,
   reducers: {
     setLoadingStatus: (state, action: PayloadAction<'idle' | 'loading' | 'failed'>) => {
