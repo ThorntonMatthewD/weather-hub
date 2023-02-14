@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { debounce } from 'lodash';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   setZipCode,
   selectZipCode,
 } from './../../features/user/userSlice';
-import { useGetCurrentWeatherQuery } from '../../features/weatherInfo/weatherInfoAPI';
+import { weatherAPI } from '../../features/weatherInfo/weatherInfoAPI';
 
 import LocationSelector from '../components/LocationSelector';
 import COPY from '../../COPY.json';
@@ -16,24 +17,37 @@ const Home = (props: HomeProps) => {
   const zipCode = useAppSelector(selectZipCode);
   const dispatch = useAppDispatch();
 
-  const {
-    data: weatherInfo,
-    isFetching,
-    isLoading,
-  } = useGetCurrentWeatherQuery(zipCode, {
-    refetchOnMountOrArgChange: true,
-    skip: false,
-  })
+  const [trigger,
+    {
+      isFetching,
+      isLoading,
+      isError,
+      error,
+      data: weatherInfo
+    }
+  ] = weatherAPI.endpoints.getCurrentWeather.useLazyQuery();
+
+  const handleZipCodeUpdate = (updatedZipCode: string) => trigger(updatedZipCode);
+
+  const debouncedChangeHandler = useMemo(
+    () => debounce(handleZipCodeUpdate, 500)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  , []);
 
   return(
     <>
       <h1>Welcome to Weather Hub</h1>
       {isFetching && <h2>Grabbing weather info</h2>}
       {isLoading && <h2>Loading weather info</h2>}
+      {isError && <h2>{`Error: ${error}`}</h2>}
       <LocationSelector
         zipCode={zipCode}
         placeholder={COPY.ZIP_CODE_PLACEHOLDER}
-        onChange={(e: React.FormEvent<HTMLInputElement>) => dispatch(setZipCode(e.currentTarget.value))}
+        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+          dispatch(setZipCode(e.currentTarget.value));
+
+          debouncedChangeHandler(e.currentTarget.value);
+        }}
       />
       {weatherInfo && (
         <>
