@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from 'react';
-import { debounce } from 'lodash';
+import { debounce, isEmpty } from 'lodash';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -27,7 +27,11 @@ const Home = (props: HomeProps) => {
     }
   ] = weatherAPI.endpoints.getCurrentWeather.useLazyQuery();
 
-  const handleZipCodeUpdate = (updatedZipCode: string) => trigger(updatedZipCode);
+  const handleZipCodeUpdate = (updatedZipCode: string) => {
+    if(isEmpty(updatedZipCode)) { return };
+
+    trigger(updatedZipCode);
+  };
 
   const debouncedChangeHandler = useMemo(
     () => debounce(handleZipCodeUpdate, 1500)
