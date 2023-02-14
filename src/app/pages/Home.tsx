@@ -52,9 +52,9 @@ const Home = (props: HomeProps) => {
       {weatherInfo && (
         <>
           <h2>The weather info you've requested:</h2>
-          <p>{JSON.stringify(weatherInfo)}</p></>
-        )
-      }
+          <p>{JSON.stringify(weatherInfo)}</p>
+        </>
+      )}
     </>
   );
 };
