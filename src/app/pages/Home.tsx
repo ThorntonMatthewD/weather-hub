@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { debounce } from 'lodash';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
@@ -30,7 +30,7 @@ const Home = (props: HomeProps) => {
   const handleZipCodeUpdate = (updatedZipCode: string) => trigger(updatedZipCode);
 
   const debouncedChangeHandler = useMemo(
-    () => debounce(handleZipCodeUpdate, 500)
+    () => debounce(handleZipCodeUpdate, 1500)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   , []);
 
@@ -39,7 +39,7 @@ const Home = (props: HomeProps) => {
       <h1>Welcome to Weather Hub</h1>
       {isFetching && <h2>Grabbing weather info</h2>}
       {isLoading && <h2>Loading weather info</h2>}
-      {isError && <h2>{`Error: ${error}`}</h2>}
+      {isError && <h2>{`Error: ${JSON.stringify(error)}`}</h2>}
       <LocationSelector
         zipCode={zipCode}
         placeholder={COPY.ZIP_CODE_PLACEHOLDER}
