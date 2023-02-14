@@ -34,6 +34,11 @@ const Home = (props: HomeProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   , []);
 
+  useEffect(() => {
+    handleZipCodeUpdate(zipCode);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return(
     <>
       <h1>Welcome to Weather Hub</h1>
