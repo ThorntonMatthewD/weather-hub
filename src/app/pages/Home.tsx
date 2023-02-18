@@ -9,7 +9,7 @@ import {
 import { weatherAPI } from '../../features/weatherInfo/weatherInfoAPI';
 
 import LocationSelector from '../components/LocationSelector';
-import COPY from '../../COPY.json';
+import COPY from '../../data/COPY.json';
 
 type HomeProps = {};
 
