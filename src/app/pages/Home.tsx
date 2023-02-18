@@ -1,5 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import { debounce, isEmpty } from 'lodash';
+import { Container } from '@mui/material';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -60,11 +61,11 @@ const Home = (props: HomeProps) => {
         }}
       />
       {weatherInfo && (
-        <>
+        <Container maxWidth="lg">
           <h2>The weather info you've requested:</h2>
           <p>{JSON.stringify(weatherInfo)}</p>
           <WeatherPane/>
-        </>
+        </Container>
       )}
     </>
   );
