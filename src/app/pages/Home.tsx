@@ -8,6 +8,7 @@ import {
 } from './../../features/user/userSlice';
 import { weatherAPI } from '../../features/weatherInfo/weatherInfoAPI';
 
+import WeatherPane from '../components/WeatherPane';
 import LocationSelector from '../components/LocationSelector';
 import COPY from '../../data/COPY.json';
 
@@ -62,6 +63,7 @@ const Home = (props: HomeProps) => {
         <>
           <h2>The weather info you've requested:</h2>
           <p>{JSON.stringify(weatherInfo)}</p>
+          <WeatherPane/>
         </>
       )}
     </>
