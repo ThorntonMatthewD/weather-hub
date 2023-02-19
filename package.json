@@ -57,7 +57,6 @@
   },
   "devDependencies": {
     "eslint-plugin-react-hooks": "experimental",
-    "jest-css-modules": "^2.1.0",
     "jest-environment-jsdom": "^29.4.3",
     "tailwindcss": "^3.2.7"
   }
