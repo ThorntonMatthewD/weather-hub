@@ -54,7 +54,7 @@ const Home = (props: HomeProps) => {
       <LocationSelector
         zipCode={zipCode}
         placeholder={COPY.ZIP_CODE_PLACEHOLDER}
-        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
           dispatch(setZipCode(e.currentTarget.value));
 
           debouncedChangeHandler(e.currentTarget.value);

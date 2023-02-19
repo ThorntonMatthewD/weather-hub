@@ -1,23 +1,25 @@
-import React from 'react';
+import { TextField } from '@mui/material';
 
 type LocationSelectorProps = {
   zipCode: string;
   placeholder: string;
-  onChange: (event: React.FormEvent<HTMLInputElement>)=>void;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=>void;
 }
 
 const LocationSelector = (props: LocationSelectorProps) => {
 
   return (
     <>
-      <label htmlFor="userZipCode">Zip Code: </label>
-      <input
+      <TextField
+        id="zip-code-input"
+        label="U.S. Zip Code"
+        variant="outlined"
         value={props.zipCode}
         placeholder={props.placeholder}
         onChange={props.onChange}
         name="userZipCode"
-        type="text"
-        maxLength={5}
+        inputProps={{ maxLength: 5 }}
+        autoFocus
       />
     </>
   );
