@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 
-type LocationSelectorProps = {
+export type LocationSelectorProps = {
   zipCode: string;
   placeholder: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=>void;
