@@ -1,9 +1,16 @@
-import React from 'react';
+import UnitsSwitcher from "./weatherWidgets/UnitsSwitcher";
 
 type WeatherPaneProps = {};
 
 const WeatherPane = (props: WeatherPaneProps) => {
-  return <p>Test</p>
+  return <>
+    <UnitsSwitcher
+      enableFreedomUnits={true}
+      onUnitsChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        console.log(e.target.value)}
+      }
+    />
+  </>
 };
 
 export default WeatherPane;

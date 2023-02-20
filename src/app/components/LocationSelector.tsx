@@ -1,5 +1,3 @@
-import { TextField } from '@mui/material';
-
 export type LocationSelectorProps = {
   zipCode: string;
   placeholder: string;
@@ -10,16 +8,31 @@ const LocationSelector = (props: LocationSelectorProps) => {
 
   return (
     <>
-      <TextField
-        id="zip-code-input"
-        label="U.S. Zip Code"
-        variant="outlined"
-        value={props.zipCode}
-        placeholder={props.placeholder}
-        onChange={props.onChange}
+      <input
+        type="text"
+        className="
+          form-control
+          block
+          w-full
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        "
+        id="usrZipCode"
         name="userZipCode"
-        inputProps={{ maxLength: 5 }}
-        autoFocus
+        placeholder={props.placeholder}
+        value={props.zipCode}
+        onChange={props.onChange}
+        maxLength={5}
       />
     </>
   );
