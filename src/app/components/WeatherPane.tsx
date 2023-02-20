@@ -1,11 +1,15 @@
+import { connect } from 'react-redux'
+
 import UnitsSwitcher from "./weatherWidgets/UnitsSwitcher";
 
-type WeatherPaneProps = {};
+type WeatherPaneProps = {
+  enableFreedomUnits: boolean
+};
 
 const WeatherPane = (props: WeatherPaneProps) => {
   return <>
     <UnitsSwitcher
-      enableFreedomUnits={true}
+      enableFreedomUnits={props.enableFreedomUnits}
       onUnitsChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         console.log(e.target.value)}
       }
@@ -13,4 +17,8 @@ const WeatherPane = (props: WeatherPaneProps) => {
   </>
 };
 
-export default WeatherPane;
+export default connect(
+  (state: WeatherPaneProps) => ({
+    enableFreedomUnits: state.enableFreedomUnits
+  })
+)(WeatherPane);;
