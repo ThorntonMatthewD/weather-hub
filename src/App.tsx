@@ -11,11 +11,14 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      <h1>Welcome to Weather Hub</h1>
+      <div className="container mx-auto">
+        <BrowserRouter>
+          <Routes>
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }

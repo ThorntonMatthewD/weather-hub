@@ -46,7 +46,6 @@ const Home = (props: HomeProps) => {
 
   return(
     <>
-      <h1>Welcome to Weather Hub</h1>
       {isFetching && <h2>Grabbing weather info</h2>}
       {isLoading && <h2>Loading weather info</h2>}
       {isError && <h2>{`Error: ${JSON.stringify(error)}`}</h2>}
